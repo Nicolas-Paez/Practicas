@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Carga Masiva de Estudiantes</title>
+    <style>
+        .btn-descargar {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .btn-descargar:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Carga Masiva de Estudiantes</h1>
+
+    <!-- Mostrar mensajes -->
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Botón para descargar la plantilla -->
+    <a href="{% url 'coordinador:descargar_plantilla_estudiantes' %}" class="btn-descargar">Descargar Plantilla</a>
+
+    <!-- Formulario de carga -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="archivo">Seleccione un archivo Excel (.xlsx):</label>
+        <input type="file" name="archivo" id="archivo" accept=".xlsx" required>
+        <button type="submit">Cargar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Prácticas</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+    </style>
+</head>
+<body class="mainbody">
+    <img class="imagen_login" src="{% static 'images2.jpg' %}">
+
+    <!-- Contenedor de login -->
+    <div class="login-contenedor">
+        <h2>Bienvenido/a</h2>
+
+        <!-- Mensaje de error -->
+        {% if error %}
+            <div class="mensaje-error">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Formulario de inicio de sesión -->
+        <form id="loginForm" method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="inputs-contenedor">
+                <!-- Input para el nombre de usuario -->
+                <div class="input-login">
+                    <input type="text" name="username" id="username" placeholder="Nombre de usuario" required>
+                    <div class="mensaje-error-input">
+                        {{ form.username.errors }}
+                    </div>
+                </div>
+
+                <!-- Input para la contraseña -->
+                <div class="input-login">
+                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                    <div class="mensaje-error-input">
+                        {{ form.password.errors }}
+                    </div>
+                </div>
+
+                <!-- Opciones adicionales -->
+                <div class="acciones">
+                    <label class="custom-checkbox-label">
+                        <input type="checkbox" name="remember_me">
+                        <span class="custom-checkbox"></span> Recuérdame
+                    </label>
+                    <a href="{% url 'password_reset' %}">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <!-- Botón de inicio de sesión -->
+                <button type="submit">Iniciar sesión</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (username === '' && password === '') {
+                Swal.fire({
+                 title: 'Faltan credenciales',
+                 text: "Los campos de usuario y contraseña no pueden estar vacíos.",
+                 icon: 'error'
+                });
+            } else if (username === '') {
+                Swal.fire({
+                 title: 'Faltan credenciales',
+                 text: "El campo de usuario no puede estar vacío.",
+                 icon: 'error'
+                });
+            } else if (password === '') {
+                Swal.fire({
+                 title: 'Faltan credenciales',
+                 text: "El campo de contraseña no puede estar vacío.",
+                 icon: 'error'
+                });
+            } else {
+                loginForm.submit();
+            }
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

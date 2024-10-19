@@ -1,0 +1,306 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #008CAB;
+    font-family: Jost, sans-serif;
+    min-height: 100%;
+    margin: 0;
+    font-size: 16px;
+}
+
+.contenedor {
+    display: grid;
+    grid-template:
+        "logo-top-left  login-contenedor    logo-top-right" 100% /
+        20em             auto                20em;}
+
+.logo-top-left {
+    grid-area: logo-top-left;
+    justify-self: start;
+    align-self: start;
+    width: 18.625em;
+    height: 11.875em;
+}
+
+.logo-top-right {
+    grid-area: logo-top-right;
+    justify-self: end;
+    align-self: start;
+    padding-right: 2.5em;
+    width: 12.375em;
+    height: 10.75em;
+}
+
+.login-contenedor {
+    grid-area: login-contenedor;
+    background-color: rgba(206, 206, 206, 0.1);
+    padding: 2.5em;
+    border-radius: 0.625em;
+    box-shadow: 0.3125em 0.3125em 0.25em rgba(0, 0, 0, 0.25);
+    text-align: center;
+    min-width: 34.375em;
+    min-height: 43.75em;
+    justify-self: center;
+    align-self: center;
+    border: white 0.0625em solid;
+    backdrop-filter: blur(5em);
+}
+
+.login-contenedor h2 {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 1.25em;
+    border-bottom: white 0.0625em solid;
+    padding-bottom: 1.25em;
+    font-weight: 600;
+}
+
+/* Contenedor para el mensaje de error */
+.mensaje-error {
+    background-color: #f8d7da;        /* Rojo claro para indicar un error */
+    color: #721c24;                   /* Color del texto más oscuro */
+    border: 0.0625em solid #f5c6cb;   /* Borde de color rojo suave */
+    border-radius: 0.25em;              /* Bordes redondeados */
+    padding: 0.625em;                   /* Espacio alrededor del texto */
+    font-size: 0.875em;                 /* Tamaño de letra */
+    font-weight: 500;                   /* Texto ligeramente en negrita */
+    text-align: center;                 /* Centrar el texto */
+    margin: 0 3em 0 3em;                /* Espacio alrededor del contenedor */
+}
+
+/* Opcional: animación de entrada para el mensaje de error */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.mensaje-error {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Contenedor de la lista de errores */
+.errorlist {
+    list-style-type: none; /* Eliminar el estilo de lista predeterminado */
+    padding: 0; /* Eliminar el relleno del contenedor */
+    margin: 0; /* Eliminar márgenes */
+}
+
+/* Estilos para los mensajes de error dentro de cada li */
+.errorlist li {
+    background-color: #f8d7da;  /* Rojo claro para indicar un error */
+    color: #721c24;             /* Color del texto más oscuro */
+    border: 0.0625em solid #f5c6cb;  /* Borde de color rojo suave */
+    border-radius: 0.25em;       /* Bordes redondeados */
+    padding: 0.625em;            /* Espacio alrededor del texto */
+    font-size: 0.875em;          /* Tamaño de letra */
+    font-weight: 500;            /* Texto ligeramente en negrita */
+    text-align: center;          /* Centrar el texto */
+    animation: fadeIn 0.5s ease-in-out; /* Aplicar la animación */
+    margin: 1.5em 3em 0 3em;                /* Espacio alrededor del contenedor */
+}
+
+/* Animación de entrada para el mensaje de error */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.inputs-contenedor{
+    justify-content: center;
+    align-items: center;
+    margin: 4em 0;
+}
+.input-login {
+    margin-bottom: 1.5em;
+    position: relative;
+}
+
+.input-login input {
+    width: 100%;
+    padding: 0.625em;
+    border-radius: 3.125em;
+    border: white 0.0625em solid;
+    height: 3.75em;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.input-login input[type="text"], 
+.input-login input[type="password"] {
+    background-color: transparent;
+    padding-left: 2.5em;
+}
+
+.input-login input[type="text"]::placeholder,
+.input-login input[type="password"]::placeholder {
+    color: white;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-align: left;
+}
+
+.input-login input[type="text"]:focus,
+.input-login input[type="password"]:focus {
+    outline: none;
+    border: white 3px solid;
+}
+
+.input-login img {
+    position: absolute;
+    right: 1.5em;
+    top: 0.625em;
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.acciones {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.825em;
+    font-size: 1.25em;
+    padding: 0 1.25em 2em 1.25em;
+}
+
+/* Ocultar el checkbox original */
+.custom-checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+/* Estilo personalizado para el checkbox */
+.custom-checkbox-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.custom-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 0.9375em;
+    height: 0.9375em;
+    background-color: rgba(206, 206, 206, 0.1); /* Color de fondo del checkbox */
+    border: 0.0625em solid white; /* Color del borde */
+    border-radius: 0.125em; /* Bordes redondeados */
+    margin-right: 0.5em; /* Espacio entre checkbox y texto */
+}
+
+.custom-checkbox::after {
+    content: "";
+    position: absolute;
+    right: 0.1875em;
+    bottom: 0.125em;
+    width: 0.375em;
+    height: 0.625em;
+    border: solid white;
+    border-width: 0 0.125em 0.125em 0;
+    transform: rotate(45deg);
+    opacity: 0; /* Ocultar checkmark por defecto */
+}
+
+/* Mostrar el checkmark cuando está seleccionado */
+.custom-checkbox-label input[type="checkbox"]:checked + .custom-checkbox::after {
+    opacity: 1;
+}
+
+.acciones label {
+    color: white;
+}
+
+.acciones a {
+    color: white;
+    text-decoration: none;
+}
+
+.acciones a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.btn {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: white 0.0625em solid;
+    padding: 0.625em;
+    width: 100%;
+    border-radius: 3.125em;
+    cursor: pointer;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: black;
+    border: white 0.0625em solid;
+    padding: 0.625em;
+    width: 100%;
+    border-radius: 3.125em;
+    cursor: pointer;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.iconos-inferiores {
+    border-top: white 0.0625em solid;
+    padding-top: 1.25em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.625em;
+    justify-content: center;
+    align-items: center;
+}
+
+.iconos-inferiores img {
+    width: 7em;
+    height: 7em;
+    align-self: center;
+    justify-self: center;
+}
+
+.iconos-inferiores .ortesis3{
+    padding-bottom: 1.5625em;
+    width: 8em;
+    height: 8em;
+}
+
+@media (max-width: 1600px) {
+
+    body{
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+    body{
+        font-size: 10px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    body{
+        font-size: 7px;
+    }
+
+}

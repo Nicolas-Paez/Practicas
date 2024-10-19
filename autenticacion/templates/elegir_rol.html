@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar rol</title>
+    <!--     Fuente JOST    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!--     Estilos CSS    -->
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/elegir_rol.css' %}">
+</head>
+<body class="contenedor">
+
+    <!-- Logos -->
+    <img src="{% static 'images/logo_universidad_blanco.svg' %}" alt="Logo Universidad Autónoma" class="logo-top-left">
+
+
+    <!-- Contenedor de login -->
+    <div class="login-contenedor">
+        <h2>Bienvenido/a</h2>
+
+        <!-- Formulario de inicio de sesión -->
+        <form method="GET" action="{% url 'elegir_rol' %}">
+            {% csrf_token %}
+            <h3>Ingresar como:</h3>
+            <div class="inputs-contenedor">
+                {% for role in roles %}
+                    <button type="submit" name="role" value="{{ role.name }}" class="btn">{{ role.name }}</button>
+                {% endfor %}
+            </div>
+        </form>
+
+    </div>
+
+</body>
+</html>

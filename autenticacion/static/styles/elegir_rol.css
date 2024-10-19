@@ -1,0 +1,18 @@
+.btn {
+    margin-bottom: 1em;
+    max-width: 18.125em;
+    min-height: 2.125em;
+}
+
+h3 {
+    color: white;
+    font-size: 2em;
+    font-weight: 500;
+    margin-bottom: 1.25em;
+}
+
+.inputs-contenedor{
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0; /* important */
+}
